@@ -1,0 +1,40 @@
+### THE CODE IS IN PYTHON
+
+#SOLUTION 1 The below is using TWO LOOPS
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        vs=''
+        v = 'aeiouAEIOU'
+        for i in s:
+            if i in v:
+                vs += i
+        vs = vs[::-1]
+        a = ''
+        k = 0
+        for i in s:
+            if i in v:
+                a += vs[k]
+                k += 1
+            else:
+                a += i
+        return a
+
+#SOLUTION 2 The below is using TWO POINTERS
+
+class Solution:
+    def reverseVowels(self, s: str) -> str:
+        v = 'aeiouAEIOU'
+        s = list(s)
+        p1 = 0
+        p2 = len(s)-1
+        while p1 < p2:
+            if p1 < p2 and s[p1] not in v:
+                p1 += 1
+            elif p1 < p2 and s[p2] not in v:
+                p2 -= 1
+            else:
+                s[p1], s[p2] = s[p2], s[p1]
+                p1 += 1
+                p2 -= 1
+        return "".join(s)
+
